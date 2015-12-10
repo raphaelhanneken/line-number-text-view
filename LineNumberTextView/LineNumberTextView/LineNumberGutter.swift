@@ -27,7 +27,7 @@
 
 import Cocoa
 
-private let GUTTER_WIDTH: CGFloat = 20.0
+private let GUTTER_WIDTH: CGFloat = 40.0
 
 
 /// Adds line numbers to a NSTextField.

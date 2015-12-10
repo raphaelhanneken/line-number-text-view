@@ -7,8 +7,12 @@
 //
 
 import Cocoa
+import LineNumberTextView
 
 class MainWindowController: NSWindowController {
+
+  // Points to the NSTextView.
+  @IBOutlet var text: LineNumberTextView!
 
   override var windowNibName: String {
     return "MainWindowController"

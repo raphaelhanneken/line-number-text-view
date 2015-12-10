@@ -12,7 +12,23 @@
 		8E95D6981C1A28C800ED6245 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E95D6961C1A28C800ED6245 /* MainMenu.xib */; };
 		8E95D6A31C1A292F00ED6245 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E95D6A11C1A292F00ED6245 /* MainWindowController.swift */; };
 		8E95D6A41C1A292F00ED6245 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E95D6A21C1A292F00ED6245 /* MainWindowController.xib */; };
+		8E95D6A61C1A2B4B00ED6245 /* LineNumberTextView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E95D6A51C1A2B4B00ED6245 /* LineNumberTextView.framework */; };
+		8E95D6A71C1A2B4B00ED6245 /* LineNumberTextView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8E95D6A51C1A2B4B00ED6245 /* LineNumberTextView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8E95D6A81C1A2B4B00ED6245 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8E95D6A71C1A2B4B00ED6245 /* LineNumberTextView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8E95D68F1C1A28C700ED6245 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +38,7 @@
 		8E95D6991C1A28C800ED6245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E95D6A11C1A292F00ED6245 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		8E95D6A21C1A292F00ED6245 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
+		8E95D6A51C1A2B4B00ED6245 /* LineNumberTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = LineNumberTextView.framework; path = "/Users/dot/Library/Developer/Xcode/DerivedData/LineNumberView-gunyzvwqvdamjhajzvqfduaqzecs/Build/Products/Debug/LineNumberTextView.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E95D6A61C1A2B4B00ED6245 /* LineNumberTextView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				8E95D6911C1A28C700ED6245 /* Example */,
+				8E95D6A51C1A2B4B00ED6245 /* LineNumberTextView.framework */,
 				8E95D6901C1A28C700ED6245 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +109,7 @@
 				8E95D68B1C1A28C700ED6245 /* Sources */,
 				8E95D68C1C1A28C700ED6245 /* Frameworks */,
 				8E95D68D1C1A28C700ED6245 /* Resources */,
+				8E95D6A81C1A2B4B00ED6245 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

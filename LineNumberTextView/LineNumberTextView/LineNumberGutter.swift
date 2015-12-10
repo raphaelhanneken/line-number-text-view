@@ -27,18 +27,39 @@
 
 import Cocoa
 
+/// Defines the width of the gutter view.
 private let GUTTER_WIDTH: CGFloat = 40.0
 
 
 /// Adds line numbers to a NSTextField.
 class LineNumberGutter: NSRulerView {
 
-  ///  Initializes a LineNumberGutter and attaches it to the given text view.
+  /// Holds the background color.
+  internal var backgroundColor: NSColor {
+    didSet {
+      self.needsDisplay = true
+    }
+  }
+
+  /// Holds the text color.
+  internal var foregroundColor: NSColor {
+    didSet {
+      self.needsDisplay = true
+    }
+  }
+
+  ///  Initializes a LineNumberGutter with the given attributes.
   ///
-  ///  - parameter textView: NSTextView to attach the LineNumberGutter to.
+  ///  - parameter textView:        NSTextView to attach the LineNumberGutter to.
+  ///  - parameter foregroundColor: Defines the foreground color.
+  ///  - parameter backgroundColor: Defines the background color.
   ///
   ///  - returns: An initialized LineNumberGutter object.
-  init(withTextView textView: NSTextView) {
+  init(withTextView textView: NSTextView, foregroundColor: NSColor, backgroundColor: NSColor) {
+    // Set the color preferences.
+    self.backgroundColor = backgroundColor
+    self.foregroundColor = foregroundColor
+
     // Make sure everything's set up properly before initializing properties.
     super.init(scrollView: textView.enclosingScrollView, orientation: .VerticalRuler)
 
@@ -46,6 +67,20 @@ class LineNumberGutter: NSRulerView {
     self.clientView = textView
     // Define the ruler's width.
     self.ruleThickness = GUTTER_WIDTH
+  }
+
+  ///  Initializes a default LineNumberGutter, attached to the given textView.
+  ///  Default foreground color: hsla(0, 0, 0, 0.55);
+  ///  Default background color: hsla(0, 0, 0.95, 1);
+  ///
+  ///  - parameter textView: NSTextView to attach the LineNumberGutter to.
+  ///
+  ///  - returns: An initialized LineNumberGutter object.
+  convenience init(withTextView textView: NSTextView) {
+    let fg = NSColor(calibratedHue: 0, saturation: 0, brightness: 0, alpha: 1)
+    let bg = NSColor(calibratedHue: 0, saturation: 0, brightness: 0, alpha: 1)
+    // Call the designated initializer.
+    self.init(withTextView: textView, foregroundColor: fg, backgroundColor: bg)
   }
 
   required init?(coder: NSCoder) {
@@ -56,6 +91,11 @@ class LineNumberGutter: NSRulerView {
   ///
   ///  - parameter rect: NSRect to draw the gutter view in.
   override func drawHashMarksAndLabelsInRect(rect: NSRect) {
+    // Set the current background color...
+    self.backgroundColor.set()
+    // ...and fill the given rect.
+    NSRectFill(rect)
+
     // Unwrap the clientView, the layoutManager and the textContainer, since we'll
     // them sooner or later.
     guard let textView      = self.clientView as? NSTextView,
@@ -132,7 +172,7 @@ class LineNumberGutter: NSRulerView {
       return
     }
     // Define attributes for the attributed string.
-    let attrs = [NSFontAttributeName: font]
+    let attrs = [NSFontAttributeName: font, NSForegroundColorAttributeName: self.foregroundColor]
     // Define the attributed string.
     let attributedString = NSAttributedString(string: "\(num)", attributes: attrs)
     // Get the NSZeroPoint from the text view.

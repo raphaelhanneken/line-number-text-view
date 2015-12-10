@@ -31,7 +31,27 @@ import Cocoa
 public class LineNumberTextView: NSTextView {
 
   /// Holds the attached line number gutter.
-  var lineNumberGutter: LineNumberGutter?
+  private var lineNumberGutter: LineNumberGutter?
+
+  /// Holds the text color for the gutter. Available in the Inteface Builder.
+  @IBInspectable public var gutterForegroundColor: NSColor? {
+    didSet {
+      if let gutter = self.lineNumberGutter,
+             color  = self.gutterForegroundColor {
+        gutter.foregroundColor = color
+      }
+    }
+  }
+
+  /// Holds the background color for the gutter. Available in the Inteface Builder.
+  @IBInspectable public var gutterBackgroundColor: NSColor? {
+    didSet {
+      if let gutter = self.lineNumberGutter,
+             color  = self.gutterBackgroundColor {
+        gutter.backgroundColor = color
+      }
+    }
+  }
 
 
   override public func awakeFromNib() {
@@ -40,7 +60,12 @@ public class LineNumberTextView: NSTextView {
       fatalError("Unwrapping the text views scroll view failed!")
     }
 
-    self.lineNumberGutter = LineNumberGutter(withTextView: self)
+    if let gutterBG = self.gutterBackgroundColor,
+           gutterFG = self.gutterForegroundColor {
+            self.lineNumberGutter = LineNumberGutter(withTextView: self, foregroundColor: gutterFG, backgroundColor: gutterBG)
+    } else {
+      self.lineNumberGutter = LineNumberGutter(withTextView: self)
+    }
 
     scrollView.verticalRulerView  = self.lineNumberGutter
     scrollView.hasHorizontalRuler = false

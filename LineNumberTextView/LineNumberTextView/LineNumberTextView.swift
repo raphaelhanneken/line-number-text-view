@@ -28,6 +28,40 @@
 import Cocoa
 
 /// A NSTextView with a line number gutter attached to it.
-class LineNumberTextView: NSTextView {
-  
+public class LineNumberTextView: NSTextView {
+
+  /// Holds the attached line number gutter.
+  var lineNumberGutter: LineNumberGutter?
+
+
+  override public func awakeFromNib() {
+    // Get the enclosing scroll view
+    guard let scrollView = self.enclosingScrollView else {
+      fatalError("Unwrapping the text views scroll view failed!")
+    }
+
+    self.lineNumberGutter = LineNumberGutter(withTextView: self)
+
+    scrollView.verticalRulerView  = self.lineNumberGutter
+    scrollView.hasHorizontalRuler = false
+    scrollView.hasVerticalRuler   = true
+    scrollView.rulersVisible      = true
+
+    self.addObservers()
+  }
+
+  /// Add observers to redraw the line number gutter, when necessary.
+  internal func addObservers() {
+    self.postsFrameChangedNotifications = true
+
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "drawGutter", name: NSViewFrameDidChangeNotification, object: self)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "drawGutter", name: NSTextDidChangeNotification, object: self)
+  }
+
+  /// Set needsDisplay of lineNumberGutter to true.
+  internal func drawGutter() {
+    if let lineNumberGutter = self.lineNumberGutter {
+      lineNumberGutter.needsDisplay = true
+    }
+  }
 }

@@ -27,7 +27,28 @@
 
 import Cocoa
 
+private let GUTTER_WIDTH: CGFloat = 20.0
+
+
 /// Adds line numbers to a NSTextField.
 class LineNumberGutter: NSRulerView {
 
+  ///  Initializes a LineNumberGutter and attaches it to the given text view.
+  ///
+  ///  - parameter textView: NSTextView to attach the LineNumberGutter to.
+  ///
+  ///  - returns: An initialized LineNumberGutter object.
+  init(withTextView textView: NSTextView) {
+    // Make sure everything's set up properly before initializing properties.
+    super.init(scrollView: textView.enclosingScrollView, orientation: .VerticalRuler)
+
+    // Set the rulers clientView to the supplied textview.
+    self.clientView = textView
+    // Define the ruler's width.
+    self.ruleThickness = GUTTER_WIDTH
+  }
+
+  required init?(coder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+  }
 }

@@ -33,10 +33,18 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="minSize" width="480" height="270"/>
-                                    <size key="maxSize" width="480" height="10000000"/>
+                                    <size key="maxSize" width="482" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="480" height="270"/>
-                                    <size key="maxSize" width="480" height="10000000"/>
+                                    <size key="maxSize" width="482" height="10000000"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="gutterForegroundColor">
+                                            <color key="value" red="0.9960780143737793" green="0.9960780143737793" blue="0.9960780143737793" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="gutterBackgroundColor">
+                                            <color key="value" red="0.65277397632598877" green="0.36671200394630432" blue="0.59690797328948975" alpha="0.94999998807907104" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,6 +58,16 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cAM-XN-leh">
+                        <rect key="frame" x="393" y="13" width="66" height="32"/>
+                        <buttonCell key="cell" type="push" title="Test" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="reN-hQ-hs8">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="changeColors:" target="-2" id="3Id-ru-krQ"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="QBj-HP-D3Y" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="-1" id="GWy-X7-tmQ"/>

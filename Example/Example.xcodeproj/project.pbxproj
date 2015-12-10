@@ -10,6 +10,8 @@
 		8E95D6931C1A28C700ED6245 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E95D6921C1A28C700ED6245 /* AppDelegate.swift */; };
 		8E95D6951C1A28C800ED6245 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E95D6941C1A28C800ED6245 /* Assets.xcassets */; };
 		8E95D6981C1A28C800ED6245 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E95D6961C1A28C800ED6245 /* MainMenu.xib */; };
+		8E95D6A31C1A292F00ED6245 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E95D6A11C1A292F00ED6245 /* MainWindowController.swift */; };
+		8E95D6A41C1A292F00ED6245 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E95D6A21C1A292F00ED6245 /* MainWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +20,8 @@
 		8E95D6941C1A28C800ED6245 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E95D6971C1A28C800ED6245 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8E95D6991C1A28C800ED6245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E95D6A11C1A292F00ED6245 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		8E95D6A21C1A292F00ED6245 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				8E95D6921C1A28C700ED6245 /* AppDelegate.swift */,
+				8E95D6A11C1A292F00ED6245 /* MainWindowController.swift */,
 				8E95D6A01C1A28E400ED6245 /* View */,
 				8E95D69F1C1A28D200ED6245 /* Resources */,
 			);
@@ -69,6 +74,7 @@
 		8E95D6A01C1A28E400ED6245 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8E95D6A21C1A292F00ED6245 /* MainWindowController.xib */,
 				8E95D6961C1A28C800ED6245 /* MainMenu.xib */,
 			);
 			name = View;
@@ -133,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E95D6951C1A28C800ED6245 /* Assets.xcassets in Resources */,
+				8E95D6A41C1A292F00ED6245 /* MainWindowController.xib in Resources */,
 				8E95D6981C1A28C800ED6245 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E95D6A31C1A292F00ED6245 /* MainWindowController.swift in Sources */,
 				8E95D6931C1A28C700ED6245 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

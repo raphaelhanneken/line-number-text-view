@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		8E95D67B1C1A04D800ED6245 /* LineNumberTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E95D67A1C1A04D800ED6245 /* LineNumberTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E95D6831C1A075C00ED6245 /* LineNumberGutter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E95D6821C1A075C00ED6245 /* LineNumberGutter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8E95D6771C1A04D800ED6245 /* LineNumberTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LineNumberTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E95D67A1C1A04D800ED6245 /* LineNumberTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineNumberTextView.h; sourceTree = "<group>"; };
 		8E95D67C1C1A04D800ED6245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E95D6821C1A075C00ED6245 /* LineNumberGutter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineNumberGutter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				8E95D67A1C1A04D800ED6245 /* LineNumberTextView.h */,
+				8E95D6821C1A075C00ED6245 /* LineNumberGutter.swift */,
 				8E95D67C1C1A04D800ED6245 /* Info.plist */,
 			);
 			path = LineNumberTextView;
@@ -130,6 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E95D6831C1A075C00ED6245 /* LineNumberGutter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +229,7 @@
 		8E95D6801C1A04D800ED6245 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -237,12 +242,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.raphaelhanneken.LineNumberTextView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		8E95D6811C1A04D800ED6245 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

@@ -30,63 +30,63 @@ import Cocoa
 /// A NSTextView with a line number gutter attached to it.
 public class LineNumberTextView: NSTextView {
 
-  /// Holds the attached line number gutter.
-  private var lineNumberGutter: LineNumberGutter?
+    /// Holds the attached line number gutter.
+    private var lineNumberGutter: LineNumberGutter?
 
-  /// Holds the text color for the gutter. Available in the Inteface Builder.
-  @IBInspectable public var gutterForegroundColor: NSColor? {
-    didSet {
-      if let gutter = self.lineNumberGutter,
-             color  = self.gutterForegroundColor {
-        gutter.foregroundColor = color
-      }
-    }
-  }
-
-  /// Holds the background color for the gutter. Available in the Inteface Builder.
-  @IBInspectable public var gutterBackgroundColor: NSColor? {
-    didSet {
-      if let gutter = self.lineNumberGutter,
-             color  = self.gutterBackgroundColor {
-        gutter.backgroundColor = color
-      }
-    }
-  }
-
-
-  override public func awakeFromNib() {
-    // Get the enclosing scroll view
-    guard let scrollView = self.enclosingScrollView else {
-      fatalError("Unwrapping the text views scroll view failed!")
+    /// Holds the text color for the gutter. Available in the Inteface Builder.
+    @IBInspectable public var gutterForegroundColor: NSColor? {
+        didSet {
+            if let gutter = self.lineNumberGutter,
+               let color  = self.gutterForegroundColor {
+                gutter.foregroundColor = color
+            }
+        }
     }
 
-    if let gutterBG = self.gutterBackgroundColor,
-           gutterFG = self.gutterForegroundColor {
+    /// Holds the background color for the gutter. Available in the Inteface Builder.
+    @IBInspectable public var gutterBackgroundColor: NSColor? {
+        didSet {
+            if let gutter = self.lineNumberGutter,
+               let color  = self.gutterBackgroundColor {
+                gutter.backgroundColor = color
+            }
+        }
+    }
+
+
+    override public func awakeFromNib() {
+        // Get the enclosing scroll view
+        guard let scrollView = self.enclosingScrollView else {
+            fatalError("Unwrapping the text views scroll view failed!")
+        }
+
+        if let gutterBG = self.gutterBackgroundColor,
+           let gutterFG = self.gutterForegroundColor {
             self.lineNumberGutter = LineNumberGutter(withTextView: self, foregroundColor: gutterFG, backgroundColor: gutterBG)
-    } else {
-      self.lineNumberGutter = LineNumberGutter(withTextView: self)
+        } else {
+            self.lineNumberGutter = LineNumberGutter(withTextView: self)
+        }
+
+        scrollView.verticalRulerView  = self.lineNumberGutter
+        scrollView.hasHorizontalRuler = false
+        scrollView.hasVerticalRuler   = true
+        scrollView.rulersVisible      = true
+
+        self.addObservers()
     }
 
-    scrollView.verticalRulerView  = self.lineNumberGutter
-    scrollView.hasHorizontalRuler = false
-    scrollView.hasVerticalRuler   = true
-    scrollView.rulersVisible      = true
+    /// Add observers to redraw the line number gutter, when necessary.
+    internal func addObservers() {
+        self.postsFrameChangedNotifications = true
 
-    self.addObservers()
-  }
-
-  /// Add observers to redraw the line number gutter, when necessary.
-  internal func addObservers() {
-    self.postsFrameChangedNotifications = true
-
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "drawGutter", name: NSViewFrameDidChangeNotification, object: self)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "drawGutter", name: NSTextDidChangeNotification, object: self)
-  }
-
-  /// Set needsDisplay of lineNumberGutter to true.
-  internal func drawGutter() {
-    if let lineNumberGutter = self.lineNumberGutter {
-      lineNumberGutter.needsDisplay = true
+        NotificationCenter.default.addObserver(self, selector: #selector(self.drawGutter), name: NSView.frameDidChangeNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.drawGutter), name: NSText.didChangeNotification, object: self)
     }
-  }
+
+    /// Set needsDisplay of lineNumberGutter to true.
+    @objc internal func drawGutter() {
+        if let lineNumberGutter = self.lineNumberGutter {
+            lineNumberGutter.needsDisplay = true
+        }
+    }
 }

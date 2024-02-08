@@ -67,6 +67,8 @@ class LineNumberGutter: NSRulerView {
         self.clientView = textView
         // Define the ruler's width.
         self.ruleThickness = GUTTER_WIDTH
+        // Fixing an issue with invisible text
+        self.clipsToBounds = true
     }
 
     ///  Initializes a default LineNumberGutter, attached to the given textView.
